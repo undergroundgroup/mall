@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1/mall
+    driverClassName: com.mysql.jdbc.Driver
+    username: root
+    password: a
+
+  mvc:
+    view:
+      prefix: WEB-INF/jsp/
+      suffix: .jsp
+
+logging:
+  level:
+    root: ERROR
+    com.digitalmall: DEBUG
