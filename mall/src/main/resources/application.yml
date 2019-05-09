@@ -13,4 +13,4 @@ spring:
 logging:
   level:
     root: ERROR
-    com.digitalmall: DEBUG
+    com..market.mall: DEBUG
