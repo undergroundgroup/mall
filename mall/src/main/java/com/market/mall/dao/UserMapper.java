@@ -3,6 +3,9 @@ package com.market.mall.dao;
 import com.market.mall.bean.User;
 import com.market.mall.bean.UserExample;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
@@ -93,4 +96,10 @@ public interface UserMapper {
      * @mbg.generated Mon May 06 23:35:21 CST 2019
      */
     int updateByPrimaryKey(User record);
+
+	User login(@Param("uname") String uname,@Param("upwd") String upwd);
+	
+	User selectByUname(String uname);
+
+	int register(@Param("uname")String uname,@Param("email") String email,@Param("upwd") String upwd);
 }

@@ -315,4 +315,17 @@
       sex = #{sex,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
+  
+  <select id="login" resultType="com.market.mall.bean.User">
+      select uid,upwd,email,uname,addr,tel,sex from user where uname=#{uname} and upwd=#{upwd}
+  </select>
+  
+  <select id="selectByUname" resultType="com.market.mall.bean.User">
+    select uid,upwd,email,uname,addr,tel,sex from user where uname=#{uname}
+  </select>
+  
+  <insert id="register" parameterType="com.market.mall.bean.User">
+  	insert into user(uname,email,upwd) values(#{uname},#{email},#{upwd})
+  </insert>
+  
 </mapper>
