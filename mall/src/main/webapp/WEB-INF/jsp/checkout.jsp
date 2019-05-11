@@ -120,48 +120,97 @@
 			<div class="checkout-left">
 				<div class="address_form_agile">
 					<h4>Add a new Details</h4>
-					<form action="payment.jsp" method="post" class="creditly-card-form agileinfo_form">
-						<div class="creditly-wrapper wthree, w3_agileits_wrapper">
-							<div class="information-wrapper">
-								<div class="first-row">
-									<div class="controls">
-										<input class="billing-address-name" type="text" name="name" placeholder="Full Name" required="">
-									</div>
-									<div class="w3_agileits_card_number_grids">
-										<div class="w3_agileits_card_number_grid_left">
-											<div class="controls">
-												<input type="text" placeholder="Mobile Number" name="number" required="">
-											</div>
+					<c:set var="u" value='${user}'></c:set>
+					<c:if test="${u!=null}">
+						<form action="payfor" method="post" class="creditly-card-form agileinfo_form">
+							<div class="creditly-wrapper wthree, w3_agileits_wrapper">
+								<div class="information-wrapper">
+									<div class="first-row">
+										<div class="controls">
+											<input class="billing-address-name" type="text" name="name" placeholder="Full Name" required="" value="${u.uname}">
 										</div>
-										<div class="w3_agileits_card_number_grid_right">
-											<div class="controls">
-												<input type="text" placeholder="Landmark" name="landmark" required="">
+										<div class="w3_agileits_card_number_grids">
+											<div class="w3_agileits_card_number_grid_left">
+												<div class="controls">
+													<input type="text" placeholder="Mobile Number" name="number" required="" value="${u.tel}">
+												</div>
 											</div>
+											<div class="w3_agileits_card_number_grid_right">
+												<div class="controls">
+													<input type="text" placeholder="Landmark" name="landmark" required="" value="${u.addr}">
+												</div>
+											</div>
+											<div class="clear"> </div>
 										</div>
-										<div class="clear"> </div>
+										<div class="controls">
+											<input type="text" placeholder="Town/City" name="city" required="">
+										</div>
+										<div class="controls">
+											<select class="option-w3ls">
+												<option>Select Address type</option>
+												<option>Office</option>
+												<option>Home</option>
+												<option>Commercial</option>
+	
+											</select>
+										</div>
 									</div>
-									<div class="controls">
-										<input type="text" placeholder="Town/City" name="city" required="">
-									</div>
-									<div class="controls">
-										<select class="option-w3ls">
-											<option>Select Address type</option>
-											<option>Office</option>
-											<option>Home</option>
-											<option>Commercial</option>
-
-										</select>
-									</div>
+									<button class="submit check_out">Delivery to this Address</button>
 								</div>
-								<button class="submit check_out">Delivery to this Address</button>
 							</div>
+						</form>
+						<div class="checkout-right-basket">
+							<a href="payment.jsp">Make a Payment
+								<span class="fa fa-hand-o-right" aria-hidden="true"></span>
+							</a>
 						</div>
-					</form>
-					<div class="checkout-right-basket">
-						<a href="payment.jsp">Make a Payment
-							<span class="fa fa-hand-o-right" aria-hidden="true"></span>
-						</a>
-					</div>
+					</c:if>
+					
+					<c:if test="${u==null}">
+						<form action="payfor" method="post" class="creditly-card-form agileinfo_form">
+							<div class="creditly-wrapper wthree, w3_agileits_wrapper">
+								<div class="information-wrapper">
+									<div class="first-row">
+										<div class="controls">
+											<input class="billing-address-name" type="text" name="name" placeholder="Full Name" required="">
+										</div>
+										<div class="w3_agileits_card_number_grids">
+											<div class="w3_agileits_card_number_grid_left">
+												<div class="controls">
+													<input type="text" placeholder="Mobile Number" name="number" required="">
+												</div>
+											</div>
+											<div class="w3_agileits_card_number_grid_right">
+												<div class="controls">
+													<input type="text" placeholder="Landmark" name="landmark" required="">
+												</div>
+											</div>
+											<div class="clear"> </div>
+										</div>
+										<div class="controls">
+											<input type="text" placeholder="Town/City" name="city" required="">
+										</div>
+										<div class="controls">
+											<select class="option-w3ls">
+												<option>Select Address type</option>
+												<option>Office</option>
+												<option>Home</option>
+												<option>Commercial</option>
+	
+											</select>
+										</div>
+									</div>
+									<button class="submit check_out">Delivery to this Address</button>
+								</div>
+							</div>
+						</form>
+						<div class="checkout-right-basket">
+							<a href="payment.jsp">Make a Payment
+								<span class="fa fa-hand-o-right" aria-hidden="true"></span>
+							</a>
+						</div>
+					</c:if>
+					
 				</div>
 				<div class="clearfix"> </div>
 			</div>
