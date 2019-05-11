@@ -86,6 +86,7 @@ public class HelloAction {
 	
 	@RequestMapping(value="confirm", method=RequestMethod.POST)
 	public String submit(@RequestParam("size") int size, HttpServletRequest request){
+		request.getSession().removeAttribute("cartsList");
 		DBHelper.update("delete from cache");
 		DBHelper.update("alter table cache AUTO_INCREMENT=1");
 		for(int i = 1; i <= size; i++){
@@ -99,6 +100,8 @@ public class HelloAction {
 			String sql2 = "insert into cache values(?,?,?,?,?,?)";
 			DBHelper.update(sql2, pro.getPname(), amount, pro.getPrice(), pro.getImage(), null, money);
 		}
+		List<Cache> ca =  DBHelper.select("select * from cache", Cache.class);
+		request.getSession().setAttribute("cartsList", ca);
 		return "redirect:tomylist";
 	}
 	
@@ -119,7 +122,7 @@ public class HelloAction {
 		String pid = request.getParameter("id");
 		String sql = "delete from cache where pid=?";
 		int result = DBHelper.update(sql, pid);
-		return "checkout";
+		return "redirect:tomylist";
 	}
 	
 }
