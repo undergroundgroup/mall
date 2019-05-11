@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script src="sweet-alert.min.js"></script>
+<script src="sweet-alert.css"></script>
+<script src="sweet-alert.js"></script>
 <header>
 	<!-- top-header -->
 	<div class="header-most-top">
@@ -34,10 +38,19 @@
 					<li>
 						<span class="fa fa-phone" aria-hidden="true"></span> 001 234 5678
 					</li>
+					<c:set var="a" value='${user}' ></c:set>
+					<c:if test="${a==null }">
 					<li>
 						<a href="#" data-toggle="modal" data-target="#myModal1">
 							<span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In </a>
 					</li>
+					</c:if>
+					<c:if test="${a!=null }">
+						<li>
+							<a href="quit">
+								<span >${user.uname}</span>  </a>
+						</li>
+					</c:if>
 					<li>
 						<a href="#" data-toggle="modal" data-target="#myModal2">
 							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> Sign Up </a>
@@ -470,12 +483,12 @@
 							<a href="#" data-toggle="modal" data-target="#myModal2">
 								Sign Up Now</a>
 						</p>
-						<form action="#" method="post">
+						<form action="login" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="User Name" name="Name" required="">
+								<input type="text" placeholder="User Name" name="uname" required="">
 							</div>
 							<div class="styled-input">
-								<input type="password" placeholder="Password" name="password" required="">
+								<input type="password" placeholder="Password" name="upwd" required="">
 							</div>
 							<input type="submit" value="Sign In">
 						</form>
@@ -507,18 +520,18 @@
 						<p>
 							Come join the Grocery Shoppy! Let's set up your Account.
 						</p>
-						<form action="#" method="post">
+						<form action="reg" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="Name" name="Name" required="">
+								<input type="text" placeholder="Name" name="uname" required="">
 							</div>
 							<div class="styled-input">
-								<input type="email" placeholder="E-mail" name="Email" required="">
+								<input type="email" placeholder="E-mail" name="email" required="">
 							</div>
 							<div class="styled-input">
-								<input type="password" placeholder="Password" name="password" id="password1" required="">
+								<input type="password" placeholder="Password" name="upwd" id="password1" required="">
 							</div>
 							<div class="styled-input">
-								<input type="password" placeholder="Confirm Password" name="Confirm Password" id="password2" required="">
+								<input type="password" placeholder="Confirm Password" name="rupwd" id="password2" required="">
 							</div>
 							<input type="submit" value="Sign Up">
 						</form>
@@ -729,3 +742,31 @@
 		</div>
 	</div>
 </header>
+<c:if test="${!empty msg}">
+	<script type="text/javascript">
+		alert('${msg}');
+	</script>
+
+</c:if>
+<script type="text/javascript">
+	$("#name").click(function(){
+		swal({
+			  title: "决定要退出了吗？",
+			  text: "您需要重新登陆才能看到购物车清单哦~",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonColor: "#DD6B55",
+			  confirmButtonText: "Yes",
+			  closeOnConfirm: false
+			},
+			function(){
+			  swal("您已经成功退出啦！", "我们期待与您下次服务~", "success");
+			  $.ajax({
+	                 type: "POST",
+	                 url: "user.s?op=quit",
+	                 cache: false, //不缓存此页面   
+	             });
+			  window.location.reload();
+			});
+	});
+</script>
