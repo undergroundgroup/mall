@@ -205,7 +205,7 @@
 							</div>
 						</form>
 						<div class="checkout-right-basket">
-							<a href="payment.jsp">Make a Payment
+							<a href="payment">Make a Payment
 								<span class="fa fa-hand-o-right" aria-hidden="true"></span>
 							</a>
 						</div>
