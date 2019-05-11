@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%
-	if(request.getAttribute("cartsList") == null){
-		request.getRequestDispatcher("query").forward(request, response);
-	}
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +68,7 @@
 			<!-- //tittle heading -->
 			<div class="checkout-right">
 				<h4>Your shopping cart contains:
-					<span>3 Products</span>
+					<span>${cartsList.size()} Products</span>
 				</h4>
 				<div class="table-responsive">
 					<table class="timetable_sub">
@@ -88,44 +83,37 @@
 								<th>Remove</th>
 							</tr>
 						</thead>
+						<c:set var="a" value='${cartsList}'></c:set>
+						<c:if test="${a!=null}">
 						<c:forEach items="${cartsList}" var="c">
 						<tr class="rem${c.pid}">
-						<td class="invert">${c.pid}</td>
-						<td class="invert-image"><a href="#"><img src="${c.pimg}" alt=" " class="img-responsive" /></a></td>
-						<td class="invert">
-							 <div class="quantity"> 
-								<div class="quantity-select">                           
-									<div class="entry value-minus">&nbsp;</div>
-									<div class="entry value"><span>${c.amount}</span></div>
-									<div class="entry value-plus active">&nbsp;</div>
+							<td class="invert">${c.pid}</td>
+							<td class="invert-image">
+								<a href="#">
+									<img src="${c.pimg}" alt=" " class="img-responsive">
+								</a>
+							</td>
+							<td class="invert">
+								<div class="quantity">
+									<div class="quantity-select">
+										<div class="entry value-minus">&nbsp;</div>
+										<div class="entry value">
+											<span>${c.amount}</span>
+										</div>
+										<div class="entry value-plus active">&nbsp;</div>
+									</div>
 								</div>
-							</div>
-						</td>
-						<td class="invert">${c.pname}</td>
-						
-						<td class="invert">¥${c.pprice}</td>
-						<td class="invert">
-							<div class="rem">
-								<div id="del" name="${c.pid}" class="close${c.pid}"> </div>
-							</div>
-							<script>$(document).ready(function(c) {
-								$('.close${c.pid}').on('click', function(c){
-									var pid = $("#del").attr("name");
-									$.ajax({
-										type: 'POST',
-										url: 'del',
-										data: 'id=' + pid,
-										cache: false, //不缓存此页面   
-									});	
-									$('.rem${c.pid}').fadeOut('slow', function(c){
-										$('.rem${c.pid}').remove();
-									});
-									});	  
-								});
-						   </script>
-						</td>
-					</tr>
+							</td>
+							<td class="invert">${c.pname}</td>
+							<td class="invert">$${c.pprice}</td>
+							<td class="invert">
+								<div class="rem">
+									<div id="del" name="${c.pid}" class="close${c.pid}"> </div>
+								</div>
+							</td>
+						</tr>
 					</c:forEach>
+					</c:if>
 					</table>
 				</div>
 			</div>
@@ -255,6 +243,42 @@
 		});
 	</script>
 	<!-- //cart-js -->
+	
+	<!--quantity-->
+	<script>
+		$('.value-plus').on('click', function () {
+			var divUpd = $(this).parent().find('.value'),
+				newVal = parseInt(divUpd.text(), 10) + 1;
+			divUpd.text(newVal);
+		});
+
+		$('.value-minus').on('click', function () {
+			var divUpd = $(this).parent().find('.value'),
+				newVal = parseInt(divUpd.text(), 10) - 1;
+			if (newVal >= 1) divUpd.text(newVal);
+		});
+	</script>
+	<!--quantity-->
+	<c:forEach items="${cartsList}" var="c">
+	<script>
+		$(document).ready(function (c) {
+			$('.close${c.pid}').on('click', function (c) {
+				var pid = $("#del").attr("name");
+				$.ajax({
+					type: 'POST',
+					url: 'del',
+					data: 'id=' + pid,
+					cache: false, //不缓存此页面   
+				});	
+				$('.rem${c.pid}').fadeOut('slow', function (c) {
+					$('.rem${c.pid}').remove();
+				});
+			});
+		});
+	</script>
+	</c:forEach>
+	
+	<!--//quantity-->
 
 	<!-- password-script -->
 	<script>
