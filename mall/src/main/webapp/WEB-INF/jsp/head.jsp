@@ -16,7 +16,7 @@
 			<!-- header-bot-->
 			<div class="col-md-4 logo_agile">
 				<h1>
-					<a href="index.jsp">
+					<a href="index">
 						<span>G</span>rocery
 						<span>S</span>hoppy
 						<img src="images/logo2.png" alt=" ">
@@ -585,12 +585,12 @@
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
 								<li>
-									<a class="nav-stylehead" href="index.jsp">Home
+									<a class="nav-stylehead" href="index">Home
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>
 								<li class="active">
-									<a class="nav-stylehead" href="about.jsp">About Us</a>
+									<a class="nav-stylehead" href="about">About Us</a>
 								</li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kitchen
@@ -716,7 +716,7 @@
 									</ul>
 								</li>
 								<li class="">
-									<a class="nav-stylehead" href="faqs.jsp">Faqs</a>
+									<a class="nav-stylehead" href="faqs">Faqs</a>
 								</li>
 								<li class="dropdown">
 									<a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Pages
@@ -724,15 +724,15 @@
 									</a>
 									<ul class="dropdown-menu agile_short_dropdown">
 										<li>
-											<a href="icons.jsp">Web Icons</a>
+											<a href="icons">Web Icons</a>
 										</li>
 										<li>
-											<a href="typography.jsp">Typography</a>
+											<a href="typography">Typography</a>
 										</li>
 									</ul>
 								</li>
 								<li>
-									<a class="" href="contact.jsp">Contact</a>
+									<a class="" href="contact">Contact</a>
 								</li>
 							</ul>
 						</div>

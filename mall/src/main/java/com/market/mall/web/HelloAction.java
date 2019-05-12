@@ -170,4 +170,9 @@ public class HelloAction {
 		return "payment";
 	}
 	
+	@RequestMapping("single")
+	public String single(){
+		return "single";
+	}
+	
 }
