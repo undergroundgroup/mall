@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -297,23 +298,25 @@
 				<div class="wrapper">
 					<!-- first section -->
 					<div class="product-sec1">
+					<c:forEach items="${productitem}" var="p">
 						<div class="col-xs-4 product-men">
+						
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
 									<img src="images/k1.jpg" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="single.jsp" class="link-product-add-cart">Quick View</a>
+											<a href="details?pname=${p.pname}" class="link-product-add-cart">Quick View</a>
 										</div>
 									</div>
 									<span class="product-new-top">New</span>
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.jsp">Zeeba Basmati Rice</a>
+										<a href="details?pname=${p.pname}">${p.pname}</a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">$950.00</span>
+										<span class="item_price">${p.price}</span>
 										<del>$1020.00</del>
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -335,7 +338,9 @@
 
 								</div>
 							</div>
+							
 						</div>
+						</c:forEach>
 						<div class="col-xs-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">

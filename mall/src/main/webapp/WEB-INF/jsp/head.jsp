@@ -601,7 +601,7 @@
 											<div class="col-sm-4 multi-gd-img">
 												<ul class="multi-column-dropdown">
 													<li>
-														<a href="shopindex">Bakery</a>
+														<a href="shopindex1?type=Bakery">Bakery</a>
 													</li>
 													<li>
 														<a href="shopindex">Baking Supplies</a>
