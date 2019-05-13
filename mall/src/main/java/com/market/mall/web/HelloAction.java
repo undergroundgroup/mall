@@ -25,6 +25,7 @@ import com.market.mall.dao.DBHelper;
 import com.market.mall.dao.MylistMapper;
 import com.market.mall.dao.ProductMapper;
 import com.market.mall.dao.UserMapper;
+import com.market.mall.dao.Picture;
 
 @Controller
 public class HelloAction {
@@ -44,39 +45,64 @@ public class HelloAction {
 		return "index";
 	}
 	
-	@RequestMapping("login")
+	@RequestMapping("/login")
 	public String login(HttpServletRequest request){
 		String uname = request.getParameter("uname");
 		String upwd = request.getParameter("upwd");
 		User user = um.login(uname,upwd);
 		if (user!=null){
 			request.getSession().setAttribute("user",user);
+			return "index";
 		}else{
 			request.setAttribute("msg", "登录失败，请确认用户名或密码是否正确");
 		}
 		return "index";
+	
 	}
 	
-	@RequestMapping("reg")
-	public String register(HttpServletRequest request,Model model){
+	@RequestMapping(value="/checkCode")
+	public void checkCode(HttpServletRequest request, HttpServletResponse response)
+	  throws ServletException, IOException {
+		//设置相应类型,告诉浏览器输出的内容为图片
+		response.setContentType("image/jpeg");
+		//设置响应头信息，告诉浏览器不要缓存此内容
+		response.setHeader("pragma", "no-cache");
+		response.setHeader("Cache-Control", "no-cache");
+		response.setDateHeader("Expire", 0);
+		Picture picture = new Picture();
+		try {
+			picture.getRandcode(request, response);//输出图片方法
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping("/reg")
+	public String register(User u,HttpServletRequest request,Model model){
 		String uname=request.getParameter("uname");
 		String email=request.getParameter("email");
 		String upwd = request.getParameter("upwd");
-		User u=um.selectByUname(uname);
-		if(u==null){
-			int result=um.register(uname, email, upwd);
-			if(result>0){
-				request.setAttribute("msg", "注册成功");
-				return "index";
+		String code = request.getParameter("code");
+		String ccode=(String) request.getSession().getAttribute("checkcode");
+		System.out.println(ccode);
+		
+		
+		if(code.equalsIgnoreCase(ccode)){
+			User uu=um.selectByUname(uname);
+			if(uu==null){
+				int result=um.register(uname, email, upwd);
+				if(result>0){
+					request.setAttribute("msg", "注册成功");
+				}else{
+					request.setAttribute("msg", "注册失败");
+				}
 			}else{
-				request.setAttribute("msg", "注册失败");
+				request.setAttribute("msg", "该用户已存在");
 			}
 		}else{
-			request.setAttribute("msg", "该用户已存在");
-		}
-		
+			request.setAttribute("msg", "验证码错误");
+		}	
 		return "index";
-		
 	}
 	@RequestMapping("quit")
 	public String quit(HttpServletRequest request){
