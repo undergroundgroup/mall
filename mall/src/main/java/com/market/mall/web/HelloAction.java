@@ -45,6 +45,11 @@ public class HelloAction {
 		return "index";
 	}
 	
+	/**
+	 * 登录
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request){
 		String uname = request.getParameter("uname");
@@ -60,6 +65,13 @@ public class HelloAction {
 	
 	}
 	
+	/**
+	 * 显示图片到网页
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	@RequestMapping(value="/checkCode")
 	public void checkCode(HttpServletRequest request, HttpServletResponse response)
 	  throws ServletException, IOException {
@@ -77,6 +89,13 @@ public class HelloAction {
 		}
 	}
 	
+	/**
+	 * 注册
+	 * @param u
+	 * @param request
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/reg")
 	public String register(User u,HttpServletRequest request,Model model){
 		String uname=request.getParameter("uname");
@@ -104,6 +123,12 @@ public class HelloAction {
 		}	
 		return "index";
 	}
+	
+	/**
+	 * 退出登录
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("quit")
 	public String quit(HttpServletRequest request){
 		request.getSession().removeAttribute("user");
@@ -111,12 +136,18 @@ public class HelloAction {
 		return "index";
 	}
 	
+	
 	@RequestMapping("shopindex")
 	public String mallindex(){
 		return "product";
 	}
 	
-	
+	/**
+	 * 加入购物车
+	 * @param size
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="confirm", method=RequestMethod.POST)
 	public String submit(@RequestParam("size") int size, HttpServletRequest request){
 		request.getSession().removeAttribute("cartsList");
@@ -150,6 +181,11 @@ public class HelloAction {
 		return "checkout";
 	}
 	
+	/**
+	 * 清空购物车
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("del")
 	public String del(HttpServletRequest request){
 		String pid = request.getParameter("id");
@@ -158,6 +194,15 @@ public class HelloAction {
 		return "redirect:tomylist";
 	}
 	
+	/**
+	 * 支付
+	 * @param request
+	 * @param uname
+	 * @param tel
+	 * @param addr
+	 * @param city
+	 * @return
+	 */
 	@RequestMapping("payfor")
 	public String pay(HttpServletRequest request, @RequestParam("name") String uname,
 			@RequestParam("number") String tel, @RequestParam("landmark") String addr, @RequestParam("city") String city){
