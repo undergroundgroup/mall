@@ -260,6 +260,7 @@ public class HelloAction {
         		if(result>0){
         			request.setAttribute("msg", "修改成功！");
         			d.code="";
+        			return "index";
         		}else{
         			request.setAttribute("msg", "修改失败,请确认用户名是否错误！");
         		}
@@ -271,6 +272,7 @@ public class HelloAction {
     	}
 		return "index";
 	}
+	
 	
 	/**
 	 * 发送邮件
