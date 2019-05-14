@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.market.mall.bean.Cache;
 import com.market.mall.bean.Mylist;
@@ -25,6 +26,8 @@ import com.market.mall.dao.DBHelper;
 import com.market.mall.dao.MylistMapper;
 import com.market.mall.dao.ProductMapper;
 import com.market.mall.dao.UserMapper;
+import com.market.mall.util.Data;
+import com.market.mall.util.MyUtils;
 import com.market.mall.dao.Picture;
 
 @Controller
@@ -236,6 +239,53 @@ public class HelloAction {
 		return "payment";
 	}
 	
+	
+	/**
+	 * 找回密码
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("forget")
+	public String findpwd(HttpServletRequest request){
+		String uname=request.getParameter("uname");
+		String email=request.getParameter("email");
+		String code=request.getParameter("code");
+		String upwd=request.getParameter("pwd");
+		String rpwd=request.getParameter("rpwd");
+		Data d=new Data();
+		System.out.println(d.code);
+		if(code.equals(d.code)){
+    		if(rpwd.equals(upwd)){
+    			int result=um.updatePwd(upwd,email,uname);
+        		if(result>0){
+        			request.setAttribute("msg", "修改成功！");
+        			d.code="";
+        		}else{
+        			request.setAttribute("msg", "修改失败,请确认用户名是否错误！");
+        		}
+    		}else{
+    			request.setAttribute("msg", "两次输入的密码不匹配");
+    		}
+    	}else{
+    		request.setAttribute("msg", "验证码错误，请确认是否输入错误");
+    	}
+		return "index";
+	}
+	
+	/**
+	 * 发送邮件
+	 * @param request
+	 */
+	@RequestMapping("SendCode")
+	@ResponseBody
+	public void sendMail(HttpServletRequest request){
+		String email=request.getParameter("email");
+		MyUtils mu=new MyUtils();
+		mu.sendMail(email);
+		Data d=new Data();
+		System.out.println(d.code);
+	}
+	
 	@RequestMapping("payment")
 	public String payment(){
 		return "payment";
@@ -246,6 +296,9 @@ public class HelloAction {
 		return "single";
 	}
 	
-	
+	@RequestMapping("personal")
+	public String change(){
+		return "index";
+	}
 	
 }
