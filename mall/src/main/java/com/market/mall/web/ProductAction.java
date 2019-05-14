@@ -6,10 +6,12 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.market.mall.bean.Product;
 import com.market.mall.bean.ProductExample;
@@ -39,10 +41,20 @@ public class ProductAction {
 		String name = request.getParameter("pname");
 		ProductExample productExample=new ProductExample();
 		productExample.createCriteria().andPnameEqualTo(name);
-		List<Product> product = productMapper.selectByExample(productExample);
-		model.addAttribute("detailsproduct", product);
-		System.out.println(product);
+		List<Product> productdetails = productMapper.selectByExample(productExample);
+		model.addAttribute("detailsproduct", productdetails);
+		System.out.println(productdetails);
 		return "single";
+	}
+	
+	@RequestMapping(value="Queryall",method=RequestMethod.POST)
+	public String Queryall(@RequestParam("search") String search,HttpServletRequest request,Model model){
+		ProductExample productExample=new ProductExample();
+		productExample.createCriteria().andPnameLike(search);
+		List<Product> producttype = productMapper.selectByExample(productExample);
+		model.addAttribute("productitem", producttype);
+		System.out.println(producttype);
+		return "product";
 	}
 	
 	

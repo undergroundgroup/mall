@@ -66,10 +66,11 @@
 			</h3>
 			<!-- //tittle heading -->
 			<!-- product left -->
+			<!-- 查询仓库所有 -->
 			<div class="side-bar col-md-3">
 				<div class="search-hotel">
 					<h3 class="agileits-sear-head">Search Here..</h3>
-					<form action="#" method="post">
+					<form action="Queryall" method="post">
 						<input type="search" placeholder="Product name..." name="search" required="">
 						<input type="submit" value=" ">
 					</form>
@@ -303,7 +304,7 @@
 						
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="images/k1.jpg" alt="">
+									<img src="${p.image}" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
 											<a href="details?pname=${p.pname}" class="link-product-add-cart">Quick View</a>
@@ -316,7 +317,7 @@
 										<a href="details?pname=${p.pname}">${p.pname}</a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">${p.price}</span>
+										<span class="item_price">$${p.price}</span>
 										<del>$1020.00</del>
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -325,8 +326,8 @@
 												<input type="hidden" name="cmd" value="_cart" />
 												<input type="hidden" name="add" value="1" />
 												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Zeeba Basmati Rice - 5 KG" />
-												<input type="hidden" name="amount" value="950.00" />
+												<input type="hidden" name="item_name" value="${p.pname}" />
+												<input type="hidden" name="amount" value="${p.price}" />
 												<input type="hidden" name="discount_amount" value="1.00" />
 												<input type="hidden" name="currency_code" value="USD" />
 												<input type="hidden" name="return" value=" " />

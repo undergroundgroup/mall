@@ -5,14 +5,18 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.ui.Model;
 
 import com.market.mall.bean.Cache;
 import com.market.mall.bean.Mylist;
+import com.market.mall.bean.Product;
+import com.market.mall.bean.ProductExample;
 import com.market.mall.bean.User;
 import com.market.mall.bean.isOne;
 import com.market.mall.dao.DBHelper;
@@ -31,7 +35,7 @@ public class MallApplicationTests {
 	@Resource
 	private MylistMapper mm;
 
-	@Test
+	/*@Test
 	public void contextLoads() {
 		String uname = "admin";
 		List<Cache> ca =  DBHelper.select("select * from cache", Cache.class);
@@ -61,6 +65,15 @@ public class MallApplicationTests {
 			o.setIsone(isOne.isOne);
 			mm.insert(o);
 		}
+	}
+	*/
+	@Test
+	public void contextLoads2(){
+		ProductExample productExample=new ProductExample();
+		productExample.createCriteria().andPnameLike("Br");
+		List<Product> productdetails = pm.selectByExample(productExample);
+		
+		System.out.println(productdetails);
 	}
 
 }

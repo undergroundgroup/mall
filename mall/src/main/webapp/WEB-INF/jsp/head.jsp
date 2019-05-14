@@ -604,47 +604,47 @@
 														<a href="shopindex1?type=Bakery">Bakery</a>
 													</li>
 													<li>
-														<a href="shopindex">Baking Supplies</a>
+														<a href="shopindex1?type=BakingSupplies">Baking Supplies</a>
 													</li>
 													<li>
-														<a href="shopindex">Coffee, Tea & Beverages</a>
+														<a href="shopindex1?type=CoffeeTeaBeverages">Coffee, Tea & Beverages</a>
 													</li>
 													<li>
-														<a href="shopindex">Dried Fruits, Nuts</a>
+														<a href="shopindex1?type=DriedFruitsNuts">Dried Fruits, Nuts</a>
 													</li>
 													<li>
-														<a href="shopindex">Sweets, Chocolate</a>
+														<a href="shopindex1?type=SweetsChocolate">Sweets, Chocolate</a>
 													</li>
 													<li>
-														<a href="shopindex">Spices & Masalas</a>
+														<a href="shopindex1?type=SpicesMasalas">Spices & Masalas</a>
 													</li>
 													<li>
-														<a href="shopindex">Jams, Honey & Spreads</a>
+														<a href="shopindex1?type=JamsHoneySpreads">Jams, Honey & Spreads</a>
 													</li>
 												</ul>
 											</div>
 											<div class="col-sm-4 multi-gd-img">
 												<ul class="multi-column-dropdown">
 													<li>
-														<a href="shopindex">Pickles</a>
+														<a href="shopindex1?type=Pickles">Pickles</a>
 													</li>
 													<li>
-														<a href="shopindex">Pasta & Noodles</a>
+														<a href="shopindex1?type=PastaNoodles">Pasta & Noodles</a>
 													</li>
 													<li>
-														<a href="shopindex">Rice, Flour & Pulses</a>
+														<a href="shopindex1?type=RiceFlourPulses">Rice, Flour & Pulses</a>
 													</li>
 													<li>
-														<a href="shopindex">Sauces & Cooking Pastes</a>
+														<a href="shopindex1?type=SaucesCookingPastes">Sauces & Cooking Pastes</a>
 													</li>
 													<li>
-														<a href="shopindex">Snack Foods</a>
+														<a href="shopindex1?type=SnackFoods">Snack Foods</a>
 													</li>
 													<li>
-														<a href="shopindex">Oils, Vinegars</a>
+														<a href="shopindex1?type=OilsVinegars">Oils, Vinegars</a>
 													</li>
 													<li>
-														<a href="shopindex">Meat, Poultry & Seafood</a>
+														<a href="shopindex1?type=MeatPoultrySeafood">Meat, Poultry & Seafood</a>
 													</li>
 												</ul>
 											</div>
@@ -664,50 +664,50 @@
 											<div class="col-sm-6 multi-gd-img">
 												<ul class="multi-column-dropdown">
 													<li>
-														<a href="shopindex">Kitchen & Dining</a>
+														<a href="shopindex1?type=KitchenDining">Kitchen & Dining</a>
 													</li>
 													<li>
-														<a href="shopindex">Detergents</a>
+														<a href="shopindex1?type=Detergents">Detergents</a>
 													</li>
 													<li>
-														<a href="shopindex">Utensil Cleaners</a>
+														<a href="shopindex1?type=UtensilCleaners">Utensil Cleaners</a>
 													</li>
 													<li>
-														<a href="shopindex">Floor & Other Cleaners</a>
+														<a href="shopindex1?type=FloorOtherCleaners">Floor & Other Cleaners</a>
 													</li>
 													<li>
-														<a href="shopindex">Disposables, Garbage Bag</a>
+														<a href="shopindex1?type=DisposablesGarbageBag">Disposables, Garbage Bag</a>
 													</li>
 													<li>
-														<a href="shopindex">Repellents & Fresheners</a>
+														<a href="shopindex1?type=RepellentsFresheners">Repellents & Fresheners</a>
 													</li>
 													<li>
-														<a href="shopindex"> Dishwash</a>
+														<a href="shopindex1?type=Dishwash"> Dishwash</a>
 													</li>
 												</ul>
 											</div>
 											<div class="col-sm-6 multi-gd-img">
 												<ul class="multi-column-dropdown">
 													<li>
-														<a href="shopindex">Pet Care</a>
+														<a href="shopindex1?type=PetCare">Pet Care</a>
 													</li>
 													<li>
-														<a href="shopindex">Cleaning Accessories</a>
+														<a href="shopindex1?type=CleaningAccessories">Cleaning Accessories</a>
 													</li>
 													<li>
-														<a href="shopindex">Pooja Needs</a>
+														<a href="shopindex1?type=PoojaNeeds">Pooja Needs</a>
 													</li>
 													<li>
-														<a href="shopindex">Crackers</a>
+														<a href="shopindex1?type=Crackers">Crackers</a>
 													</li>
 													<li>
-														<a href="shopindex">Festive Decoratives</a>
+														<a href="shopindex1?type=FestiveDecoratives">Festive Decoratives</a>
 													</li>
 													<li>
-														<a href="shopindex">Plasticware</a>
+														<a href="shopindex1?type=Plasticware">Plasticware</a>
 													</li>
 													<li>
-														<a href="shopindex">Home Care</a>
+														<a href="shopindex1?type=HomeCare">Home Care</a>
 													</li>
 												</ul>
 											</div>
