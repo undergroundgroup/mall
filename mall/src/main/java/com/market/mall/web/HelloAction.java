@@ -139,7 +139,10 @@ public class HelloAction {
 		return "index";
 	}
 	
-	
+	/**
+	 * 产品展示
+	 * @return
+	 */
 	@RequestMapping("shopindex")
 	public String mallindex(){
 		return "product";
@@ -288,16 +291,28 @@ public class HelloAction {
 		System.out.println(d.code);
 	}
 	
+	/**
+	 * 支付
+	 * @return
+	 */
 	@RequestMapping("payment")
 	public String payment(){
 		return "payment";
 	}
 	
+	/**
+	 * 商品详情
+	 * @return
+	 */
 	@RequestMapping("single")
 	public String single(){
 		return "single";
 	}
 	
+	/**
+	 * 个人信息修改
+	 * @return
+	 */
 	@RequestMapping("personal")
 	public String change(){
 		return "index";
