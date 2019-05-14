@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,6 +56,7 @@
 	</div>
 	<!-- //page -->
 	<!-- Single Page -->
+	<c:forEach items="${detailsproduct}" var="d">
 	<div class="banner-bootom-w3-agileits">
 		<div class="container">
 			<!-- tittle heading -->
@@ -70,17 +72,17 @@
 				<div class="grid images_3_of_2">
 					<div class="flexslider">
 						<ul class="slides">
-							<li data-thumb="images/si.jpg">
+							<li data-thumb="${d.image}">
 								<div class="thumb-image">
-									<img src="images/si.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+									<img src="${d.image}" data-imagezoom="true" class="img-responsive" alt=""> </div>
 							</li>
-							<li data-thumb="images/si2.jpg">
+							<li data-thumb="${d.image}">
 								<div class="thumb-image">
-									<img src="images/si2.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+									<img src="${d.image}" data-imagezoom="true" class="img-responsive" alt=""> </div>
 							</li>
-							<li data-thumb="images/si3.jpg">
+							<li data-thumb="${d.image}">
 								<div class="thumb-image">
-									<img src="images/si3.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+									<img src="${d.image}" data-imagezoom="true" class="img-responsive" alt=""> </div>
 							</li>
 						</ul>
 						<div class="clearfix"></div>
@@ -88,7 +90,7 @@
 				</div>
 			</div>
 			<div class="col-md-7 single-right-left simpleCart_shelfItem">
-				<h3>Zeeba Premium Basmati Rice - 5 KG</h3>
+				<h3>${d.pname}</h3>
 				<div class="rating1">
 					<span class="starRating">
 						<input id="rating5" type="radio" name="rating" value="5">
@@ -104,7 +106,7 @@
 					</span>
 				</div>
 				<p>
-					<span class="item_price">$950.00</span>
+					<span class="item_price">$${d.price}</span>
 					<del>$1300.00</del>
 					<label>Free delivery</label>
 				</p>
@@ -121,7 +123,7 @@
 						</li>
 						<li>
 							1 offer from
-							<span class="item_price">$950.00</span>
+							<span class="item_price">${d.price}</span>
 						</li>
 					</ul>
 				</div>
@@ -155,8 +157,8 @@
 								<input type="hidden" name="cmd" value="_cart" />
 								<input type="hidden" name="add" value="1" />
 								<input type="hidden" name="business" value=" " />
-								<input type="hidden" name="item_name" value="Zeeba Premium Basmati Rice - 5 KG" />
-								<input type="hidden" name="amount" value="950.00" />
+								<input type="hidden" name="item_name" value="${d.pname}" />
+								<input type="hidden" name="amount" value="${d.price}" />
 								<input type="hidden" name="discount_amount" value="1.00" />
 								<input type="hidden" name="currency_code" value="USD" />
 								<input type="hidden" name="return" value=" " />
@@ -172,6 +174,7 @@
 			<div class="clearfix"> </div>
 		</div>
 	</div>
+	</c:forEach>
 	<!-- //Single Page -->
 	<!-- special offers -->
 	<div class="featured-section" id="projects">
