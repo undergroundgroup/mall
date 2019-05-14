@@ -32,8 +32,8 @@
 							<span class="fa fa-map-marker" aria-hidden="true"></span> Shop Locator</a>
 					</li>
 					<li>
-						<a href="#" data-toggle="modal" data-target="#myModal1">
-							<span class="fa fa-truck" aria-hidden="true"></span>Track Order</a>
+						<a href="#" data-toggle="modal" data-target="#myModal3">
+							<span class="fa fa-pencil-square-o" aria-hidden="true"></span>Personal</a>
 					</li>
 					<li>
 						<span class="fa fa-phone" aria-hidden="true"></span> 001 234 5678
@@ -483,7 +483,7 @@
 							<a href="#" data-toggle="modal" data-target="#myModal2">
 								Sign Up Now</a>
 						</p>
-						<form action="login" method="post">
+						<form action="/login" method="post">
 							<div class="styled-input agile-styled-input-top">
 								<input type="text" placeholder="User Name" name="uname" required="">
 							</div>
@@ -492,6 +492,9 @@
 							</div>
 							<input type="submit" value="Sign In">
 						</form>
+						<p>
+							<a href="#">Forget password</a>
+						</p>
 						<div class="clearfix"></div>
 					</div>
 					<div class="clearfix"></div>
@@ -520,7 +523,7 @@
 						<p>
 							Come join the Grocery Shoppy! Let's set up your Account.
 						</p>
-						<form action="reg" method="post">
+						<form action="/reg" method="post">
 							<div class="styled-input agile-styled-input-top">
 								<input type="text" placeholder="Name" name="uname" required="">
 							</div>
@@ -532,6 +535,10 @@
 							</div>
 							<div class="styled-input">
 								<input type="password" placeholder="Confirm Password" name="rupwd" id="password2" required="">
+							</div>
+							<div class="styled-input">
+								<input type="text" name="code" placeholder="Code" required="" width="200">
+								<img src="checkCode" alt="" width="150" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
 							</div>
 							<input type="submit" value="Sign Up">
 						</form>
