@@ -314,7 +314,19 @@ public class HelloAction {
 	 * @return
 	 */
 	@RequestMapping("personal")
-	public String change(){
+	public String change(HttpServletRequest request){
+		String uname=request.getParameter("uname");
+		String email=request.getParameter("email");
+		String addr=request.getParameter("addr");
+		String tel=request.getParameter("tel");
+		String sex=request.getParameter("sex");
+		System.out.println(uname);
+		int result=um.updatepersonal(email,addr,tel,sex,uname);
+		if(result>0){
+			return "index";
+		}else{
+			request.setAttribute("msg", "修改失败");
+		}
 		return "index";
 	}
 	

@@ -33,7 +33,7 @@
 					</li>
 					<li>
 						<a href="#" data-toggle="modal" data-target="#myModal3">
-							<span class="fa fa-pencil-square-o" aria-hidden="true"></span>Personal</a>
+							<span class="fa fa-pencil-square-o" aria-hidden="true"></span>Personal</a>	
 					</li>
 					<li>
 						<span class="fa fa-phone" aria-hidden="true"></span> 001 234 5678
@@ -571,19 +571,19 @@
 						</p>
 						<form action="personal" method="post">
 							<div class="styled-input agile-styled-input-top">
-								用户名：<input type="text" value="<%=request.getParameter("uname")%>" name="" required="">
+								用户名：<input type="text" value="${user.uname }" name="uname" disabled="disabled" required="">
 							</div>
 							<div class="styled-input">
-								邮箱：<input type="email" value="<%=request.getParameter("email")%>" name="" required="">
+								邮箱：<input type="email" value="${user.email }" name="email" required="">
 							</div>
 							<div class="styled-input">
-								地址：<input type="text" value="<%=request.getParameter("addr")%>" name="" id="" required="">
+								地址：<input type="text" value="${user.addr }" name="addr" id="" required="">
 							</div>
 							<div class="styled-input">
-								电话：<input type="text" value="<%=request.getParameter("phone")%>" name="" id="" required="">
+								电话：<input type="text" value="${user.tel }" name="tel" id="" required="">
 							</div>
 							<div class="styled-input">
-								性别：<input type="text" value="<%=request.getParameter("sex")%>" name="" id="" required="">
+								性别：<input type="text" value="${user.sex }" name="sex" id="" required="">
 							</div>
 							<input type="submit" value="Change">
 						</form>
