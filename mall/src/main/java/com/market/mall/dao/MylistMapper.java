@@ -93,4 +93,8 @@ public interface MylistMapper {
      * @mbg.generated Sat May 11 20:10:49 CST 2019
      */
     int updateByPrimaryKey(Mylist record);
+    
+    int updateByisOne(Mylist record);
+    
+    List<Mylist> selectByisOne(int isonenumber);
 }

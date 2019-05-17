@@ -239,6 +239,11 @@ public class HelloAction {
 			o.setIsone(isOne.isOne);
 			mm.insert(o);
 		}
+		u.setAddr(addr);
+		u.setTel(tel);
+		um.updateByPrimaryKey(u);
+		request.getSession().removeAttribute("user");
+		request.getSession().setAttribute("user", u);
 		return "payment";
 	}
 	
@@ -326,6 +331,82 @@ public class HelloAction {
 			return "index";
 		}else{
 			request.setAttribute("msg", "修改失败");
+		}
+		return "index";
+	}
+	
+	/**
+	 * 购买方式1:货到付款
+	 * @return
+	 */
+	@RequestMapping("payway1")
+	public String payway1(){
+		List<Mylist> list = mm.selectByisOne(isOne.isOne);
+		String state = "1";
+		String pay = "货到付款";
+		for(int i=0; i<list.size(); i++){
+			Mylist m = new Mylist();
+			m.setPay(pay);
+			m.setStatus(state);
+			m.setIsone(isOne.isOne);
+			mm.updateByisOne(m);
+		}
+		return "index";
+	}
+	
+	/**
+	 * 购买方式2:银行卡付款
+	 * @return
+	 */
+	@RequestMapping("payway2")
+	public String payway2(){
+		List<Mylist> list = mm.selectByisOne(isOne.isOne);
+		String state = "1";
+		String pay = "银行卡付款";
+		for(int i=0; i<list.size(); i++){
+			Mylist m = new Mylist();
+			m.setPay(pay);
+			m.setStatus(state);
+			m.setIsone(isOne.isOne);
+			mm.updateByisOne(m);
+		}
+		return "index";
+	}
+	
+	/**
+	 * 购买方式3:网上银行支付
+	 * @return
+	 */
+	@RequestMapping("payway3")
+	public String payway3(){
+		List<Mylist> list = mm.selectByisOne(isOne.isOne);
+		String state = "1";
+		String pay = "网上银行付款";
+		for(int i=0; i<list.size(); i++){
+			Mylist m = new Mylist();
+			m.setPay(pay);
+			m.setStatus(state);
+			m.setIsone(isOne.isOne);
+			mm.updateByisOne(m);
+		}
+		return "index";
+	}
+	
+	/**
+	 * 购买方式4:网上银行支付
+	 * @return
+	 */
+	@RequestMapping("payway4")
+	public String payway4(){
+		List<Mylist> list = mm.selectByisOne(isOne.isOne);
+		String state = "1";
+		String pay = "Paypal";
+		for(int i=0; i<list.size(); i++){
+			Mylist m = new Mylist();
+			m.setPay(pay);
+			m.setStatus(state);
+			m.setIsone(isOne.isOne);
+			mm.updateByisOne(m);
 		}
 		return "index";
 	}

@@ -81,16 +81,16 @@
 								<div class="checkbox">
 									<div class="check_box_one cashon_delivery">
 										<label class="anim">
-											<input type="checkbox" class="checkbox">
 											<span> We also accept Credit/Debit card on delivery. Please Check with the agent.</span>
 										</label>
+										<input type="button" value="Commit" onclick="sub()">
 									</div>
 
 								</div>
 							</div>
 						</div>
 						<div>
-							<form action="#" method="post" class="creditly-card-form agileinfo_form">
+							<form action="payway2" method="post" class="creditly-card-form agileinfo_form">
 								<div class="creditly-wrapper wthree, w3_agileits_wrapper">
 									<div class="credit-card-wrapper">
 										<div class="first-row form-group">
@@ -119,7 +119,7 @@
 												<input class="expiration-month-and-year form-control" type="text" name="expiration-month-and-year" placeholder="MM / YY">
 											</div>
 										</div>
-										<button class="submit">
+										<button class="submit" onclick="sub2()">
 											<span>Make a payment </span>
 										</button>
 									</div>
@@ -129,7 +129,7 @@
 						</div>
 						<div>
 							<div class="vertical_post">
-								<form action="#" method="post">
+								<form action="payway3" method="post">
 									<h5>Select From Popular Banks</h5>
 									<div class="swit-radio">
 										<div class="check_box_one">
@@ -218,7 +218,7 @@
 											<option value="VJB-NA">Vijaya Bank NetBanking</option>
 										</select>
 									</div>
-									<input type="submit" value="PAY NOW">
+									<input type="submit" value="PAY NOW" onclick="sub3()">
 								</form>
 							</div>
 						</div>
@@ -231,7 +231,7 @@
 										<a class="btn btn-primary">Checkout via Paypal</a>
 									</div>
 									<div class="col-md-6 number-paymk">
-										<form class="cc-form">
+										<form class="cc-form" action="payway4">
 											<div class="clearfix">
 												<div class="form-group form-group-cc-number">
 													<label>Card Number</label>
@@ -257,7 +257,7 @@
 												<label>
 													<input class="i-check" type="checkbox" checked="">Add to My Cards</label>
 											</div>
-											<input type="submit" class="submit" value="Proceed Payment">
+											<input type="submit" class="submit" value="Proceed Payment" onclick="sub4()">
 										</form>
 									</div>
 								</div>
@@ -297,6 +297,35 @@
 	
 	<jsp:include page="foot.jsp"></jsp:include>
 	<!-- js-files -->
+	
+	<script type="text/javascript">
+		function sub(){
+			window.location.href="payway1";
+			paypalm.minicartk.reset();
+		}
+	</script>
+	
+	<script type="text/javascript">
+		function sub2(){
+			window.location.href="payway2";
+			paypalm.minicartk.reset();
+		}
+	</script>
+	
+	<script type="text/javascript">
+		function sub3(){
+			window.location.href="payway3";
+			paypalm.minicartk.reset();
+		}
+	</script>
+	
+	<script type="text/javascript">
+		function sub4(){
+			window.location.href="payway4";
+			paypalm.minicartk.reset();
+		}
+	</script>
+	
 	<!-- jquery -->
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<!-- //jquery -->
