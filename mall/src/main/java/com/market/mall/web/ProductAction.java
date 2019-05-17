@@ -50,7 +50,7 @@ public class ProductAction {
 	@RequestMapping(value="Queryall",method=RequestMethod.POST)
 	public String Queryall(@RequestParam("search") String search,HttpServletRequest request,Model model){
 		ProductExample productExample=new ProductExample();
-		productExample.createCriteria().andPnameLike(search);
+		productExample.createCriteria().andPnameLike("%"+search+"%");
 		List<Product> producttype = productMapper.selectByExample(productExample);
 		model.addAttribute("productitem", producttype);
 		System.out.println(producttype);
