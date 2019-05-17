@@ -59,8 +59,8 @@
 				<!-- //header lists -->
 				<!-- search -->
 				<div class="agileits_search">
-					<form action="#" method="post">
-						<input name="Search" type="search" placeholder="How can we help you today?" required="">
+					<form action="Found" method="post">
+						<input name="find" type="search" placeholder="How can we help you today?">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<span class="fa fa-search" aria-hidden="true"> </span>
 						</button>

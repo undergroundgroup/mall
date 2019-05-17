@@ -57,6 +57,28 @@ public class ProductAction {
 		return "product";
 	}
 	
+	/**
+	 * 查询所有
+	 * @param search
+	 * @param request
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="Found",method=RequestMethod.POST)
+	public String Found(@RequestParam("find") String search,HttpServletRequest request,Model model){
+		ProductExample productExample=new ProductExample();
+		if("find"==null&&"find".trim().isEmpty()==true){
+			List<Product> producttype1=productMapper.selectByExample(null);
+			model.addAttribute("productitem", producttype1);
+			return "product";
+		}else{
+			productExample.createCriteria().andPnameLike("%"+search+"%");
+			List<Product> producttype = productMapper.selectByExample(productExample);
+			model.addAttribute("productitem", producttype);
+			System.out.println(producttype);
+			return "product";
+		}
+	}
 	
 	/*@RequestMapping("shopindex1")
 	public String shopindex1(Model model,HttpServletRequest request){
