@@ -59,8 +59,8 @@
 				<!-- //header lists -->
 				<!-- search -->
 				<div class="agileits_search">
-					<form action="#" method="post">
-						<input name="Search" type="search" placeholder="How can we help you today?" required="">
+					<form action="Found" method="post">
+						<input name="find" type="search" placeholder="How can we help you today?">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<span class="fa fa-search" aria-hidden="true"> </span>
 						</button>
@@ -571,7 +571,7 @@
 						</p>
 						<form action="personal" method="post">
 							<div class="styled-input agile-styled-input-top">
-								用户名：<input type="text" value="${user.uname }" name="uname" disabled="disabled" required="">
+								用户名：<input type="text" value="${user.uname }" name="uname" required="">
 							</div>
 							<div class="styled-input">
 								邮箱：<input type="email" value="${user.email }" name="email" required="">
