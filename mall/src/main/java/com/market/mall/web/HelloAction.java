@@ -354,7 +354,7 @@ public class HelloAction {
 			m.setIsone(isOne.isOne);
 			mm.updateByisOne(m);
 		}
-		request.setAttribute("msg", "付款成功！");
+		request.setAttribute("msg", "下单成功！请等待发货");
 		return "index";
 	}
 	
