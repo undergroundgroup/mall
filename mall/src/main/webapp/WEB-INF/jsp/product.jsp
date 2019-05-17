@@ -317,7 +317,7 @@
 									</h4>
 									<div class="info-product-price">
 										<span class="item_price">$${p.price}</span>
-										<del>$1020.00</del>
+										<del></del>
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
