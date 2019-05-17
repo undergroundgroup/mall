@@ -679,7 +679,7 @@
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
 								<li>
-									<a class="nav-stylehead" href="index">Home
+									<a class="nav-stylehead" href="returnhome">Home
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>
