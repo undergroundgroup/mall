@@ -323,6 +323,9 @@ public class HelloAction {
 		System.out.println(uname);
 		int result=um.updatepersonal(email,addr,tel,sex,uname);
 		if(result>0){
+			User user = um.selectByUname(uname);
+			request.getSession().removeAttribute("user");
+			request.getSession().setAttribute("user", user);
 			return "index";
 		}else{
 			request.setAttribute("msg", "修改失败");

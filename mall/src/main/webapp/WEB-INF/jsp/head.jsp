@@ -571,7 +571,7 @@
 						</p>
 						<form action="personal" method="post">
 							<div class="styled-input agile-styled-input-top">
-								用户名：<input type="text" value="${user.uname }" name="uname" disabled="disabled" required="">
+								用户名：<input type="text" value="${user.uname }" name="uname" required="">
 							</div>
 							<div class="styled-input">
 								邮箱：<input type="email" value="${user.email }" name="email" required="">
