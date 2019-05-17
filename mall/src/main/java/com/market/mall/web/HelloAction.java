@@ -343,7 +343,7 @@ public class HelloAction {
 	 * @return
 	 */
 	@RequestMapping("payway1")
-	public String payway1(){
+	public String payway1(HttpServletRequest request){
 		List<Mylist> list = mm.selectByisOne(isOne.isOne);
 		String state = "1";
 		String pay = "货到付款";
@@ -354,6 +354,7 @@ public class HelloAction {
 			m.setIsone(isOne.isOne);
 			mm.updateByisOne(m);
 		}
+		request.setAttribute("msg", "付款成功！");
 		return "index";
 	}
 	
@@ -362,7 +363,7 @@ public class HelloAction {
 	 * @return
 	 */
 	@RequestMapping("payway2")
-	public String payway2(){
+	public String payway2(HttpServletRequest request){
 		List<Mylist> list = mm.selectByisOne(isOne.isOne);
 		String state = "1";
 		String pay = "银行卡付款";
@@ -373,6 +374,7 @@ public class HelloAction {
 			m.setIsone(isOne.isOne);
 			mm.updateByisOne(m);
 		}
+		request.setAttribute("msg", "付款成功！");
 		return "index";
 	}
 	
@@ -381,7 +383,7 @@ public class HelloAction {
 	 * @return
 	 */
 	@RequestMapping("payway3")
-	public String payway3(){
+	public String payway3(HttpServletRequest request){
 		List<Mylist> list = mm.selectByisOne(isOne.isOne);
 		String state = "1";
 		String pay = "网上银行付款";
@@ -392,6 +394,7 @@ public class HelloAction {
 			m.setIsone(isOne.isOne);
 			mm.updateByisOne(m);
 		}
+		request.setAttribute("msg", "付款成功！");
 		return "index";
 	}
 	
@@ -400,7 +403,7 @@ public class HelloAction {
 	 * @return
 	 */
 	@RequestMapping("payway4")
-	public String payway4(){
+	public String payway4(HttpServletRequest request){
 		List<Mylist> list = mm.selectByisOne(isOne.isOne);
 		String state = "1";
 		String pay = "Paypal";
@@ -411,6 +414,7 @@ public class HelloAction {
 			m.setIsone(isOne.isOne);
 			mm.updateByisOne(m);
 		}
+		request.setAttribute("msg", "付款成功！");
 		return "index";
 	}
 	

@@ -783,4 +783,12 @@
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
 </body>
+
+<c:if test="${ ! empty msg }">
+	<script type="text/javascript">
+		//报错的js脚本，应该是msg!=null 才执行
+		alert('${msg}');
+	</script>
+</c:if>
+
 </html>
