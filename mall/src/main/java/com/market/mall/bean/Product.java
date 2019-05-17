@@ -332,4 +332,13 @@ public class Product {
     public void setType(String type) {
         this.type = type;
     }
+
+	@Override
+	public String toString() {
+		return "Product [pid=" + pid + ", pname=" + pname + ", price=" + price + ", info=" + info + ", count=" + count
+				+ ", state=" + state + ", ship=" + ship + ", image=" + image + ", date=" + date + ", type=" + type
+				+ "]";
+	}
+    
+    
 }
