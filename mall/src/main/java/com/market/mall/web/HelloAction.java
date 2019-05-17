@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.market.mall.bean.Cache;
 import com.market.mall.bean.Mylist;
@@ -25,6 +26,8 @@ import com.market.mall.dao.DBHelper;
 import com.market.mall.dao.MylistMapper;
 import com.market.mall.dao.ProductMapper;
 import com.market.mall.dao.UserMapper;
+import com.market.mall.util.Data;
+import com.market.mall.util.MyUtils;
 import com.market.mall.dao.Picture;
 
 @Controller
@@ -45,6 +48,11 @@ public class HelloAction {
 		return "index";
 	}
 	
+	/**
+	 * 登录
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request){
 		String uname = request.getParameter("uname");
@@ -60,6 +68,13 @@ public class HelloAction {
 	
 	}
 	
+	/**
+	 * 显示图片到网页
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	@RequestMapping(value="/checkCode")
 	public void checkCode(HttpServletRequest request, HttpServletResponse response)
 	  throws ServletException, IOException {
@@ -77,6 +92,13 @@ public class HelloAction {
 		}
 	}
 	
+	/**
+	 * 注册
+	 * @param u
+	 * @param request
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/reg")
 	public String register(User u,HttpServletRequest request,Model model){
 		String uname=request.getParameter("uname");
@@ -104,6 +126,12 @@ public class HelloAction {
 		}	
 		return "index";
 	}
+	
+	/**
+	 * 退出登录
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("quit")
 	public String quit(HttpServletRequest request){
 		request.getSession().removeAttribute("user");
@@ -111,12 +139,21 @@ public class HelloAction {
 		return "index";
 	}
 	
+	/**
+	 * 产品展示
+	 * @return
+	 */
 	@RequestMapping("shopindex")
 	public String mallindex(){
 		return "product";
 	}
 	
-	
+	/**
+	 * 加入购物车
+	 * @param size
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="confirm", method=RequestMethod.POST)
 	public String submit(@RequestParam("size") int size, HttpServletRequest request){
 		request.getSession().removeAttribute("cartsList");
@@ -150,6 +187,11 @@ public class HelloAction {
 		return "checkout";
 	}
 	
+	/**
+	 * 清空购物车
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("del")
 	public String del(HttpServletRequest request){
 		String pid = request.getParameter("id");
@@ -158,6 +200,15 @@ public class HelloAction {
 		return "redirect:tomylist";
 	}
 	
+	/**
+	 * 支付
+	 * @param request
+	 * @param uname
+	 * @param tel
+	 * @param addr
+	 * @param city
+	 * @return
+	 */
 	@RequestMapping("payfor")
 	public String pay(HttpServletRequest request, @RequestParam("name") String uname,
 			@RequestParam("number") String tel, @RequestParam("landmark") String addr, @RequestParam("city") String city){
@@ -191,14 +242,92 @@ public class HelloAction {
 		return "payment";
 	}
 	
+	
+	/**
+	 * 找回密码
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("forget")
+	public String findpwd(HttpServletRequest request){
+		String uname=request.getParameter("uname");
+		String email=request.getParameter("email");
+		String code=request.getParameter("code");
+		String upwd=request.getParameter("pwd");
+		String rpwd=request.getParameter("rpwd");
+		Data d=new Data();
+		System.out.println(d.code);
+		if(code.equals(d.code)){
+    		if(rpwd.equals(upwd)){
+    			int result=um.updatePwd(upwd,email,uname);
+        		if(result>0){
+        			request.setAttribute("msg", "修改成功！");
+        			d.code="";
+        			return "index";
+        		}else{
+        			request.setAttribute("msg", "修改失败,请确认用户名是否错误！");
+        		}
+    		}else{
+    			request.setAttribute("msg", "两次输入的密码不匹配");
+    		}
+    	}else{
+    		request.setAttribute("msg", "验证码错误，请确认是否输入错误");
+    	}
+		return "index";
+	}
+	
+	
+	/**
+	 * 发送邮件
+	 * @param request
+	 */
+	@RequestMapping("SendCode")
+	@ResponseBody
+	public void sendMail(HttpServletRequest request){
+		String email=request.getParameter("email");
+		MyUtils mu=new MyUtils();
+		mu.sendMail(email);
+		Data d=new Data();
+		System.out.println(d.code);
+	}
+	
+	/**
+	 * 支付
+	 * @return
+	 */
 	@RequestMapping("payment")
 	public String payment(){
 		return "payment";
 	}
 	
+	/**
+	 * 商品详情
+	 * @return
+	 */
 	@RequestMapping("single")
 	public String single(){
 		return "single";
+	}
+	
+	/**
+	 * 个人信息修改
+	 * @return
+	 */
+	@RequestMapping("personal")
+	public String change(HttpServletRequest request){
+		String uname=request.getParameter("uname");
+		String email=request.getParameter("email");
+		String addr=request.getParameter("addr");
+		String tel=request.getParameter("tel");
+		String sex=request.getParameter("sex");
+		System.out.println(uname);
+		int result=um.updatepersonal(email,addr,tel,sex,uname);
+		if(result>0){
+			return "index";
+		}else{
+			request.setAttribute("msg", "修改失败");
+		}
+		return "index";
 	}
 	
 }

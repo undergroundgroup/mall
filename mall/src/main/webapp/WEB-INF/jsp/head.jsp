@@ -33,7 +33,7 @@
 					</li>
 					<li>
 						<a href="#" data-toggle="modal" data-target="#myModal3">
-							<span class="fa fa-pencil-square-o" aria-hidden="true"></span>Personal</a>
+							<span class="fa fa-pencil-square-o" aria-hidden="true"></span>Personal</a>	
 					</li>
 					<li>
 						<span class="fa fa-phone" aria-hidden="true"></span> 001 234 5678
@@ -48,7 +48,7 @@
 					<c:if test="${a!=null }">
 						<li>
 							<a href="quit">
-								<span >${user.uname}</span>  </a>
+								<span >欢迎    ${user.uname} 用户</span>  </a>
 						</li>
 					</c:if>
 					<li>
@@ -493,7 +493,7 @@
 							<input type="submit" value="Sign In">
 						</form>
 						<p>
-							<a href="#">Forget password</a>
+							<a href="#" data-toggle="modal" data-target="#myModal4">Forget password</a>
 						</p>
 						<div class="clearfix"></div>
 					</div>
@@ -552,6 +552,93 @@
 		</div>
 	</div>
 	<!-- //Modal2 -->
+	<!-- Modal3 -->
+	<div class="modal fade" id="myModal3" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body modal-body-sub_agile">
+					<div class="main-mailposi">
+						<span class="fa fa-envelope-o" aria-hidden="true"></span>
+					</div>
+					<div class="modal_body_left modal_body_left1">
+						<h3 class="agileinfo_sign">Personal</h3>
+						<p>
+							Come join the Grocery Shoppy! You can change your personal message.
+						</p>
+						<form action="personal" method="post">
+							<div class="styled-input agile-styled-input-top">
+								用户名：<input type="text" value="${user.uname }" name="uname" disabled="disabled" required="">
+							</div>
+							<div class="styled-input">
+								邮箱：<input type="email" value="${user.email }" name="email" required="">
+							</div>
+							<div class="styled-input">
+								地址：<input type="text" value="${user.addr }" name="addr" id="" required="">
+							</div>
+							<div class="styled-input">
+								电话：<input type="text" value="${user.tel }" name="tel" id="" required="">
+							</div>
+							<div class="styled-input">
+								性别：<input type="text" value="${user.sex }" name="sex" id="" required="">
+							</div>
+							<input type="submit" value="Change">
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- //Modal content-->		
+		</div>
+	</div>
+	<!-- //Modal3 -->
+	<!-- Modal4 -->
+	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body modal-body-sub_agile">
+					<div class="main-mailposi">
+						<span class="fa fa-envelope-o" aria-hidden="true"></span>
+					</div>
+					<div class="modal_body_left modal_body_left1">
+						<h3 class="agileinfo_sign">Forget</h3>
+						<p>
+							You can found your password.
+						</p>
+						<form action="forget" method="post">
+							<div class="styled-input agile-styled-input-top">
+								用户名：<input type="text" name="uname" required="">
+							</div>
+							<div class="styled-input agile-styled-input-top">
+								邮箱：<input type="email" name="email" id="email" required="">
+							</div>
+							<div class="styled-input">
+								<input type="button" onclick="getCode()" value="获取验证码" style="width: 400;height: 30;">
+							</div>
+							<div class="styled-input">
+								验证码：<input type="text" name="code" required="">
+							</div>
+							<div class="styled-input">
+								密码：<input type="password" name="pwd" id="" required="">
+							</div>
+							<div class="styled-input">
+								确认密码：<input type="password" name="rpwd" id="" required="">
+							</div>
+							<input type="submit" value="Change">
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- //Modal content-->		
+		</div>
+	</div>
+	<!-- //Modal4 -->
 	<!-- //signup Model -->
 	<!-- //header-bot -->
 	<!-- navigation -->
@@ -776,4 +863,18 @@
 			  window.location.reload();
 			});
 	});
+	
+	//点击获取验证码
+	function getCode(){
+		var email=$('#email');
+		$.ajax({
+			type:"POST",
+			url:"SendCode",
+			data:email,
+			cache:false,
+			success:function(){
+				alert("验证码已发送，请查收！");
+			}
+		});	
+	}
 </script>

@@ -345,14 +345,7 @@
 						<div class="clearfix"></div>
 					</div>
 					<!-- //first section -->
-					<!-- 2nd section) -->
-					
-					<!-- 3rd section -->
-					
-					<!-- //3rd section -->
-					<!-- 4th section -->
-					
-					<!-- //4th section  -->
+				
 
 				</div>
 			</div>

@@ -102,4 +102,8 @@ public interface UserMapper {
 	User selectByUname(String uname);
 
 	int register(@Param("uname")String uname,@Param("email") String email,@Param("upwd") String upwd);
+
+	int updatePwd(@Param("upwd") String upwd, @Param("email") String email,@Param("uname") String uname);
+
+	int updatepersonal(@Param("email") String email,@Param("addr") String addr,@Param("tel") String tel,@Param("sex") String sex,@Param("uname") String uname);
 }
