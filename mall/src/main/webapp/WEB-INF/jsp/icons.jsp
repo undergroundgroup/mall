@@ -43,7 +43,7 @@
 			<div class="container">
 				<ul class="w3_short">
 					<li>
-						<a href="index.jsp">Home</a>
+						<a href="returnhome">Home</a>
 						<i>|</i>
 					</li>
 					<li>Web Icons</li>

@@ -48,6 +48,10 @@ public class HelloAction {
 		return "index";
 	}
 	
+	@RequestMapping("returnhome")
+	public String returnhome(){
+		return "index";
+	}
 	/**
 	 * 登录
 	 * @param request
