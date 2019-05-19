@@ -215,9 +215,9 @@ public class UserAction {
 				
 			}*/
 	
-	//上传文件会自动绑定到MultipartFile中
-		 @RequestMapping(value="uploadImage",method=RequestMethod.POST)
-		 public String upload(HttpServletRequest request,
+		//上传文件会自动绑定到MultipartFile中
+		@RequestMapping(value="uploadImage",method=RequestMethod.POST)
+		public String upload(HttpServletRequest request,
 				@RequestParam("file") MultipartFile file) throws Exception {
 			
 		    //如果文件不为空，写入上传路径
