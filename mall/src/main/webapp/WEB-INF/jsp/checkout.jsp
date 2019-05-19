@@ -90,7 +90,7 @@
 							<td class="invert">${c.pid}</td>
 							<td class="invert-image">
 								<a href="#">
-									<img src="${c.pimg}" alt=" " class="img-responsive">
+									<img src="/images/${c.pimg}" alt=" " style="width: 20;height: 20;" class="img-responsive">
 								</a>
 							</td>
 							<td class="invert">
