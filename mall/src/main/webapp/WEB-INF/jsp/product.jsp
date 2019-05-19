@@ -303,7 +303,7 @@
 						
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="/images/${p.image}" alt="" style="width: 150px;height: 200px;">
+									<img src="/images/${p.image}" alt="" style="width: 150px;height: 150px;">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
 											<a href="details?pname=${p.pname}" class="link-product-add-cart">Quick View</a>
