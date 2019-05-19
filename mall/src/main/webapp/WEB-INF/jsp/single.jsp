@@ -74,7 +74,7 @@
 						<ul class="slides">
 							<li data-thumb="${d.image}">
 								<div class="thumb-image">
-									<img src="${d.image}" data-imagezoom="true" class="img-responsive" alt=""> </div>
+									<img src="/images/${d.image}" data-imagezoom="true" class="img-responsive" alt=""> </div>
 							</li>
 							<li data-thumb="${d.image}">
 								<div class="thumb-image">
@@ -82,7 +82,7 @@
 							</li>
 							<li data-thumb="${d.image}">
 								<div class="thumb-image">
-									<img src="${d.image}" data-imagezoom="true" class="img-responsive" alt=""> </div>
+									<img src="/images/${d.image}" data-imagezoom="true" class="img-responsive" alt=""> </div>
 							</li>
 						</ul>
 						<div class="clearfix"></div>
