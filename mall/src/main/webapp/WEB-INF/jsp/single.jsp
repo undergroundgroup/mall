@@ -78,7 +78,7 @@
 							</li>
 							<li data-thumb="${d.image}">
 								<div class="thumb-image">
-									<img src="${d.image}" data-imagezoom="true" class="img-responsive" alt=""> </div>
+									<img src="/images/${d.image}" data-imagezoom="true" class="img-responsive" alt=""> </div>
 							</li>
 							<li data-thumb="${d.image}">
 								<div class="thumb-image">
@@ -107,47 +107,17 @@
 				</div>
 				<p>
 					<span class="item_price">$${d.price}</span>
-					<del>$1300.00</del>
-					<label>Free delivery</label>
+					<del></del>
+					<label></label>
 				</p>
-				<div class="single-infoagile">
-					<ul>
-						<li>
-							Cash on Delivery Eligible.
-						</li>
-						<li>
-							Shipping Speed to Delivery.
-						</li>
-						<li>
-							Sold and fulfilled by Supple Tek (3.6 out of 5 | 8 ratings).
-						</li>
-						<li>
-							1 offer from
-							<span class="item_price">${d.price}</span>
-						</li>
-					</ul>
-				</div>
 				<div class="product-single-w3l">
-					<p>
-						<i class="fa fa-hand-o-right" aria-hidden="true"></i>This is a
-						<label>Vegetarian</label> product.</p>
+					<p style="font-size: 30px;">Introduction</p>
 					<ul>
-						<li>
-							Best for Biryani and Pulao.
-						</li>
-						<li>
-							After cooking, Zeeba Basmati rice grains attain an extra ordinary length of upto 2.4 cm/~1 inch.
-						</li>
-						<li>
-							Zeeba Basmati rice adheres to the highest food afety standards as your health is paramount to us.
-						</li>
-						<li>
-							Contains only the best and purest grade of basmati rice grain of Export quality.
+						<li style="font-size: 20px;">
+							${d.info}
 						</li>
 					</ul>
 					<p>
-						<i class="fa fa-refresh" aria-hidden="true"></i>All food products are
-						<label>non-returnable.</label>
 					</p>
 				</div>
 				<div class="occasion-cart">
