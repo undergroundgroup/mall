@@ -72,15 +72,15 @@
 				<div class="grid images_3_of_2">
 					<div class="flexslider">
 						<ul class="slides">
-							<li data-thumb="${d.image}">
+							<li data-thumb="/images/${d.image}">
 								<div class="thumb-image">
 									<img src="/images/${d.image}" data-imagezoom="true" class="img-responsive" alt=""> </div>
 							</li>
-							<li data-thumb="${d.image}">
+							<li data-thumb="/images/${d.image}">
 								<div class="thumb-image">
 									<img src="/images/${d.image}" data-imagezoom="true" class="img-responsive" alt=""> </div>
 							</li>
-							<li data-thumb="${d.image}">
+							<li data-thumb="/images/${d.image}">
 								<div class="thumb-image">
 									<img src="/images/${d.image}" data-imagezoom="true" class="img-responsive" alt=""> </div>
 							</li>
