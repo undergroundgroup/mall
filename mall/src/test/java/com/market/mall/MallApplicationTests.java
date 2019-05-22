@@ -1,5 +1,9 @@
 package com.market.mall;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -68,12 +72,21 @@ public class MallApplicationTests {
 	}
 	*/
 	@Test
-	public void contextLoads2(){
-		ProductExample productExample=new ProductExample();
-		productExample.createCriteria().andPnameLike("Br");
-		List<Product> productdetails = pm.selectByExample(productExample);
+	public void contextLoads2() throws ParseException{
+		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println("当前时间"+df1.format(new Date()));
+        Date date1=df1.parse(df1.format(new Date()));
+        
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.DATE, -3); //得到前一天
+		Date date = calendar.getTime();
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.println("前三天时间"+df.format(date));
+		Date date2=df.parse(df.format(date));
 		
-		System.out.println(productdetails);
+		ProductExample pe=new ProductExample();
+		pe.createCriteria().andDateBetween(date2, date1);
+		System.out.println(pm.selectByExample(pe));
 	}
 
 }

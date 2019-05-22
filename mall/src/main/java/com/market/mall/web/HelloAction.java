@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.market.mall.bean.Cache;
 import com.market.mall.bean.Mylist;
 import com.market.mall.bean.Product;
+import com.market.mall.bean.ProductExample;
 import com.market.mall.bean.User;
 import com.market.mall.bean.isOne;
 import com.market.mall.dao.DBHelper;
@@ -148,7 +149,10 @@ public class HelloAction {
 	 * @return
 	 */
 	@RequestMapping("shopindex")
-	public String mallindex(){
+	public String mallindex(Model model,HttpServletRequest request){
+		List<Product> producttype = pm.selectByExample(null);
+		model.addAttribute("productitem", producttype);
+		System.out.println(producttype);
 		return "product";
 	}
 	

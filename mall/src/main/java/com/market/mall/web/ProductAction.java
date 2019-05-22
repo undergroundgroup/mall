@@ -1,6 +1,11 @@
 package com.market.mall.web;
 
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -37,13 +42,34 @@ public class ProductAction {
 	}
 	
 	@RequestMapping("details")
-	public String showproduct(Model model,HttpServletRequest request){
+	public String showproduct(Model model,HttpServletRequest request) throws ParseException{
 		String name = request.getParameter("pname");
 		ProductExample productExample=new ProductExample();
 		productExample.createCriteria().andPnameEqualTo(name);
 		List<Product> productdetails = productMapper.selectByExample(productExample);
 		model.addAttribute("detailsproduct", productdetails);
 		System.out.println(productdetails);
+		
+		/**
+		 * 根据最新上线查（3天内）
+		 */
+		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println("当前时间"+df1.format(new Date()));
+        Date date1=df1.parse(df1.format(new Date()));
+        
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.DATE, -3); //得到前一天
+		Date date = calendar.getTime();
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.println("前三天时间"+df.format(date));
+		Date date2=df.parse(df.format(date));
+		
+		ProductExample pe=new ProductExample();
+		pe.createCriteria().andDateBetween(date2, date1);
+		
+		List<Product> producttype1=productMapper.selectByExample(pe);
+		model.addAttribute("newproduct", producttype1);
+		
 		return "single";
 	}
 	
@@ -78,6 +104,19 @@ public class ProductAction {
 			System.out.println(producttype);
 			return "product";
 		}
+	}
+	
+	@RequestMapping("new")
+	public String newproduct(Model model,HttpServletRequest request){
+		String name = request.getParameter("pname");
+		ProductExample productExample=new ProductExample();
+		productExample.createCriteria().andPnameEqualTo(name);
+		List<Product> productdetails = productMapper.selectByExample(productExample);
+		model.addAttribute("detailsproduct", productdetails);
+		System.out.println(productdetails);
+		List<Product> producttype1=productMapper.selectByExample(null);
+		model.addAttribute("newproduct", producttype1);		
+		return "single";
 	}
 	
 	/*@RequestMapping("shopindex1")
