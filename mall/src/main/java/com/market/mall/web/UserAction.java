@@ -281,7 +281,6 @@ public class UserAction {
 				
 				return "product_brand";
 		 }
-	
 	/**
 	 * 添加管理员
 	 * @return

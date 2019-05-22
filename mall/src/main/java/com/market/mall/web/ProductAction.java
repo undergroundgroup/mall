@@ -40,7 +40,7 @@ public class ProductAction {
 	public String shopindex1(Model model,HttpServletRequest request){
 		String type = request.getParameter("type");
 		ProductExample productExample=new ProductExample();
-		productExample.createCriteria().andTypeEqualTo(type);
+		productExample.createCriteria().andTypeEqualTo(type).andStateEqualTo(1);
 		List<Product> producttype = productMapper.selectByExample(productExample);
 		model.addAttribute("productitem", producttype);
 		System.out.println(producttype);
@@ -58,7 +58,7 @@ public class ProductAction {
 	public String showproduct(Model model,HttpServletRequest request) throws ParseException{
 		String name = request.getParameter("pname");
 		ProductExample productExample=new ProductExample();
-		productExample.createCriteria().andPnameEqualTo(name);
+		productExample.createCriteria().andPnameEqualTo(name).andStateEqualTo(1);
 		List<Product> productdetails = productMapper.selectByExample(productExample);
 		model.addAttribute("detailsproduct", productdetails);
 		System.out.println(productdetails);
@@ -78,7 +78,7 @@ public class ProductAction {
 		Date date2=df.parse(df.format(date));
 		
 		ProductExample pe=new ProductExample();
-		pe.createCriteria().andDateBetween(date2, date1);
+		pe.createCriteria().andDateBetween(date2, date1).andStateEqualTo(1);
 		
 		List<Product> producttype1=productMapper.selectByExample(pe);
 		model.addAttribute("newproduct", producttype1);
@@ -96,7 +96,7 @@ public class ProductAction {
 	@RequestMapping(value="Queryall",method=RequestMethod.POST)
 	public String Queryall(@RequestParam("search") String search,HttpServletRequest request,Model model){
 		ProductExample productExample=new ProductExample();
-		productExample.createCriteria().andPnameLike("%"+search+"%");
+		productExample.createCriteria().andPnameLike("%"+search+"%").andStateEqualTo(1);
 		List<Product> producttype = productMapper.selectByExample(productExample);
 		model.addAttribute("productitem", producttype);
 		System.out.println(producttype);
@@ -118,7 +118,7 @@ public class ProductAction {
 			model.addAttribute("productitem", producttype1);
 			return "product";
 		}else{
-			productExample.createCriteria().andPnameLike("%"+search+"%");
+			productExample.createCriteria().andPnameLike("%"+search+"%").andStateEqualTo(1);
 			List<Product> producttype = productMapper.selectByExample(productExample);
 			model.addAttribute("productitem", producttype);
 			System.out.println(producttype);
@@ -137,7 +137,7 @@ public class ProductAction {
 	public String newproduct(Model model,HttpServletRequest request) throws ParseException{
 		String name = request.getParameter("pname");
 		ProductExample productExample=new ProductExample();
-		productExample.createCriteria().andPnameEqualTo(name);
+		productExample.createCriteria().andPnameEqualTo(name).andStateEqualTo(1);
 		List<Product> productdetails = productMapper.selectByExample(productExample);
 		model.addAttribute("detailsproduct", productdetails);
 		System.out.println(productdetails);
@@ -157,7 +157,7 @@ public class ProductAction {
 		Date date2=df.parse(df.format(date));
 		
 		ProductExample pe=new ProductExample();
-		pe.createCriteria().andDateBetween(date2, date1);
+		pe.createCriteria().andDateBetween(date2, date1).andStateEqualTo(1);
 		
 		List<Product> producttype1=productMapper.selectByExample(pe);
 		model.addAttribute("newproduct", producttype1);
