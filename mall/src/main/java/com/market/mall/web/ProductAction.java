@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.market.mall.bean.Product;
 import com.market.mall.bean.ProductExample;
@@ -186,5 +187,57 @@ public class ProductAction {
 		return "product";
 	}*/
 	
+	/**
+	 * 删除商品
+	 * @param pid
+	 * @return
+	 */
+	@RequestMapping("delProduct")
+	@ResponseBody
+	public String delProduct(Integer pid){
+		String msg="1";
+		try {
+			productMapper.deleteByPrimaryKey(pid);
+			msg="0";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return msg;
+	}
 	
+	/**
+	 * 商品下架
+	 * @param pid
+	 * @return
+	 */
+	@RequestMapping("stopProduct")
+	@ResponseBody
+	public String stopProduct(Integer pid){
+		String msg="1";
+		try {
+			productMapper.updateDownProduct(pid);
+			msg="0";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return msg;
+	}
+	
+	/**
+	 * 商品上架
+	 * @param pid
+	 * @return
+	 */
+	@RequestMapping("startProduct")
+	@ResponseBody
+	public String startProduct(Integer pid){
+		String msg="1";
+		try {
+			productMapper.updateUpProduct(pid);
+			msg="0";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return msg;
+	}
 }

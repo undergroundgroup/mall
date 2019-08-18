@@ -365,6 +365,15 @@
   
   <select id="selectByName" resultType="com.market.mall.bean.Product">
         SELECT pid,pname,price,info,count,state,ship,image,date,type FROM product WHERE pname=#{pname}
-    </select>
+   </select>
+   
+   <update id="updateDownProduct" parameterType="com.market.mall.bean.Product">
   
+    update product set state = '0' where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateUpProduct" parameterType="com.market.mall.bean.Product">
+  
+    update product set state = '1' where pid = #{pid,jdbcType=INTEGER}
+  </update>
 </mapper>

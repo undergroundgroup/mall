@@ -95,4 +95,8 @@ public interface ProductMapper {
     int updateByPrimaryKey(Product record);
     
     Product selectByName(String pname);
+    
+    int updateDownProduct(Integer pid);
+    
+    int updateUpProduct(Integer pid);
 }

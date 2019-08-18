@@ -53,8 +53,20 @@
 						<td class="text-l">${p.pname}</td>
 						<td class="text-l">${p.info}</td>
 						<td><span class="price">${p.price}</span></td>
-						<td class="td-status"><span class="label label-success radius">已发布</span></td>
-						<td class="td-manage"><a style="text-decoration:none" onClick="product_stop(this,'10001')" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a> <a style="text-decoration:none" class="ml-5" onClick="product_edit('产品编辑','product-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="product_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+						<c:choose>
+							<c:when test="${p.state==1}">
+								<td class="td-status"><span class="label label-success radius">已发布</span></td>
+								<td class="td-manage"><a style="text-decoration:none" onclick="productstop(this,${p.pid})"<%-- onClick="product_stop(this,'${p.pid}')" --%> href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a> <a style="text-decoration:none" class="ml-5" onClick="product_edit('产品编辑','product-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" <%-- onClick="product_del(this,'${p.pid}')" --%>onclick="productdel(${p.pid})" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+							</c:when>
+							<c:otherwise>
+								<td class="td-status"><span class="label label-defaunt radius">已下架</span></td>
+								<td class="td-manage"><a style="text-decoration:none" onclick="productstart(this,${p.pid})"<%-- onClick="product_stop(this,'${p.pid}')" --%> href="javascript:;" title="发布"><i class="Hui-iconfont">&#xe603;</i></a> <a style="text-decoration:none" class="ml-5" onClick="product_edit('产品编辑','product-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" <%-- onClick="product_del(this,'${p.pid}')" --%>onclick="productdel(${p.pid})" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+							</c:otherwise>
+						
+						
+						</c:choose>
+						
+						<%-- <td class="td-manage"><a style="text-decoration:none" onclick="productstop(this,${p.pid})"onClick="product_stop(this,'${p.pid}')" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a> <a style="text-decoration:none" class="ml-5" onClick="product_edit('产品编辑','product-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="product_del(this,'${p.pid}')"onclick="productdel(${p.pid})" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td> --%>
 					</tr>
 					</c:forEach>
 				</tbody>
@@ -181,6 +193,22 @@ function product_stop(obj,id){
 	});
 }
 
+function productstop(obj,id){
+	if(confirm('确定要下架吗？')){
+		$.post("stopProduct",{"pid":id},function(index){
+			if(index=="0"){
+				$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="product_start(this,id)" href="javascript:;" title="发布"><i class="Hui-iconfont">&#xe603;</i></a>');
+				$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已下架</span>');
+				$(obj).remove();
+				alert("已下架");
+			}else{
+				alert("下架失败");
+			}		
+		});
+	}
+}
+
+
 /*产品-发布*/
 function product_start(obj,id){
 	layer.confirm('确认要发布吗？',function(index){
@@ -189,6 +217,21 @@ function product_start(obj,id){
 		$(obj).remove();
 		layer.msg('已发布!',{icon: 6,time:1000});
 	});
+}
+
+function productstart(obj,id){
+	if(confirm('确定要发布吗？')){
+		$.post("startProduct",{"pid":id},function(index){
+			if(index=="0"){
+				$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="product_stop(this,id)" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a>');
+				$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发布</span>');
+				$(obj).remove();
+				alert("已发布");
+			}else{
+				alert("发布失败");
+			}		
+		});
+	}
 }
 
 /*产品-申请上线*/
@@ -213,7 +256,7 @@ function product_del(obj,id){
 	layer.confirm('确认要删除吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '',
+			url: 'delProduct',
 			dataType: 'json',
 			success: function(data){
 				$(obj).parents("tr").remove();
@@ -224,6 +267,20 @@ function product_del(obj,id){
 			},
 		});		
 	});
+}
+
+function productdel(id){
+	if(confirm('确定要删除吗？')){
+		$.post("delProduct",{"pid":id},function(data){
+			if(data=="0"){
+				alert("删除成功！");
+			}else{
+				alert("删除失败！");
+			}
+			
+			window.location.reload();
+		});
+	}
 }
 </script>
 </body>
