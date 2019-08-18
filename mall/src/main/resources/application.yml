@@ -10,12 +10,6 @@ spring:
       prefix: WEB-INF/jsp/
       suffix: .jsp
       
-  http:
-    encoding:
-      charset:utf-8
-      force:true
-      enabled:true
-      
 logging:
   level:
     root: ERROR
