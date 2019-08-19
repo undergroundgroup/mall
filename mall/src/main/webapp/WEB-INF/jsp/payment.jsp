@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,7 +84,39 @@
 										<label class="anim">
 											<span> We also accept Credit/Debit card on delivery. Please Check with the agent.</span>
 										</label>
-										<input type="button" value="Commit" onclick="sub()">
+										
+										
+	<form name="alipayment" action="pay" method="post" target="_blank">
+			<div id="body1" class="show" name="divcontent">
+				<dl class="content">
+					<dt>商户订单号 ：</dt>
+					<dd>
+						<input id="WIDout_trade_no" name="WIDout_trade_no" />
+					</dd>
+					<hr class="one_line">
+					<dt>订单名称 ：</dt>
+					<dd>
+						<input id="WIDsubject" name="WIDsubject"/>
+					</dd>
+					<hr class="one_line">
+					<dt>付款金额 ：</dt>
+					<dd>
+						<input id="WIDtotal_amount" name="WIDtotal_amount" value="${money}"/>
+					</dd>
+					<hr class="one_line">
+					<dt></dt>
+					<dd id="btn-dd">
+						<span class="new-btn-login-sp">
+							<button class="new-btn-login" type="submit"
+								style="text-align: center;">付 款</button>
+						</span> <span class="note-help">如果您点击“付款”按钮，即表示您同意该次的执行操作。</span>
+					</dd>
+				</dl>
+			</div>
+		</form>
+		
+		
+										
 									</div>
 
 								</div>
@@ -481,6 +514,40 @@
 			});
 
 		});
+		
+		$(function(){
+			$("#WIDtotal_amount").blur(function(){
+				$.ajax({
+					type: 'POST',
+					url: 'amoney',
+					data: {'WIDtotal_amount':WIDtotal_amount},
+					dataType:'json',
+					success: function(data){
+						alert(123);
+					},
+					error:function(data) {
+						alert(456);
+					}
+				});
+			});
+		});
+		
+		
+		function GetDateNow() {
+			var vNow = new Date();
+			var sNow = "";
+			sNow += String(vNow.getFullYear());
+			sNow += String(vNow.getMonth() + 1);
+			sNow += String(vNow.getDate());
+			sNow += String(vNow.getHours());
+			sNow += String(vNow.getMinutes());
+			sNow += String(vNow.getSeconds());
+			sNow += String(vNow.getMilliseconds());
+			document.getElementById("WIDout_trade_no").value =  sNow;
+			document.getElementById("WIDsubject").value = "支付宝付款";
+			/* document.getElementById("WIDtotal_amount").value=123; */
+		}
+		GetDateNow();
 	</script>
 	<!-- //smooth-scrolling-of-move-up -->
 

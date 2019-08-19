@@ -246,6 +246,8 @@ public class HelloAction {
 			o.setAmount(amount);
 			o.setIsone(isOne.isOne);
 			mm.insert(o);
+			
+			request.getSession().setAttribute("money",isOne.rmb );
 		}
 		u.setAddr(addr);
 		u.setTel(tel);
@@ -365,6 +367,34 @@ public class HelloAction {
 		request.setAttribute("msg", "下单成功！请等待发货");
 		return "index";
 	}
+	
+	/**
+	 * 支付宝支付
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("pay")
+	public String payfor(HttpServletRequest request){
+		String oid=request.getParameter("WIDout_trade_no");
+		String oname=request.getParameter("WIDsubject");
+		String money=request.getParameter("WIDtotal_amount");
+		System.out.println(oid);
+		System.out.println(oname);
+		System.out.println(money);	
+		List<Mylist> list = mm.selectByisOne(isOne.isOne);
+		String state = "1";
+		String pay = "支付宝付";
+		for(int i=0; i<list.size(); i++){
+			Mylist m = new Mylist();
+			m.setPay(pay);
+			m.setStatus(state);
+			m.setIsone(isOne.isOne);
+			mm.updateByisOne(m);
+		}
+		return "alipay.trade.page.pay";
+	}
+	
+	
 	
 	/**
 	 * 购买方式2:银行卡付款
